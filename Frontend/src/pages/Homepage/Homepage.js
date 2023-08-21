@@ -7,7 +7,7 @@ import Navbar from '../../components/navbar/navbar';
 import Incentives from '../Incentives/incentive';
 import Contact from '../ContactUs/contact';
 import Footer from '../../components/footer/footer';
-import ButtonUnstyled from '@mui/base/ButtonUnstyled';
+// import ButtonUnstyled from '@mui/base/ButtonUnstyled';
 import Responsibility from '../Responsibility/responsibility';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -17,6 +17,7 @@ import Api from '../../API/Api';
 function Home() {
 
     const [auth, setAuth] = useState(false);
+    const[ca_id,setca_id]=useState(null);
     const [app_id, setapp_id] = useState(null);
     const [sel, setSel] = useState("no");
 
@@ -26,13 +27,11 @@ function Home() {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         };
-
-
-
         Api.get(`/user/login_check`, requestOptions).then((res) => {
-
-            // console.log(res.data.user);
-            setapp_id(res.data.user.app_id)
+            console.log("we are printing on home page ")
+            console.log(res.data.user);
+            setca_id(res.data.user.ca_id);
+            setapp_id(res.data.user.app_id);
             setSel(res.data.user.selection);
             setAuth(true);
         }).catch((err) => {
@@ -56,8 +55,8 @@ function Home() {
                         <h2 className={styles.head2}> KSHITIJ, IIT KHARAGPUR</h2>
 
                         {
-                            auth ? <><h1 className={styles.btn} > {sel==="yes" ? "Congratulations! You are selected" : "Your Application is in Progress"} </h1><div className={styles.info}>Your application ID is <span style={{ fontWeight: "bold" }}>{app_id}</span></div></> : <Link to='/SignUp'><ButtonUnstyled className={styles.btn} variant="contained">Register for CA Programme
-                            </ButtonUnstyled></Link>
+                            auth ? <><h1 className={styles.btn} > {sel==="yes" ? "Congratulations! You are selected" : "Your Application is in Progress"} </h1><div className={styles.info}>Your CA ID is <span style={{ fontWeight: "bold" }}>{ca_id}</span></div><div className={styles.info}>Your Application ID is <span style={{ fontWeight: "bold" }}>{app_id}</span></div></> : <Link to='/SignUp'><div className={styles.btn} variant="contained">Register for CA Programme
+                            </div></Link>
                         }
 
                     </div>

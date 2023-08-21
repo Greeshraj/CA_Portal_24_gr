@@ -23,8 +23,6 @@ const ProfileSave = () => {
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token') }
     };
 
-
-
     Api.get(`/user/login_check`, requestOptions).then((res) => {
 
       // console.log(res.data);
@@ -36,6 +34,9 @@ const ProfileSave = () => {
       // console.log(user)
       setAuth(true);
     }).catch((err) => {
+
+      window.location.href = '/';
+      // return <Redirect to="/login" />;
       console.log(err);
       setAuth(false);
     })

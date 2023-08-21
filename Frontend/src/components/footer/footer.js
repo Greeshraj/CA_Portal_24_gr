@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 //  import url();
-
+import Api from '../../API/Api';
 
 function Footer() {
   let navigate = useNavigate();
@@ -28,7 +28,7 @@ function Footer() {
       message: message,
       phone: phone,
     };
-    axios.post("https://ca-backend-api.herokuapp.com/user/contact/", data).then((response) => {
+    axios.post("Api/user/contact/", data).then((response) => {
       if (response.status !== 200) {
         throw new Error(response.statusText);
       }

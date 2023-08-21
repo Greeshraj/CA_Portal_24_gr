@@ -32,21 +32,33 @@ exports.login = async (req, res) => {
                         ca_id: firstuser.ca_id,
                     };
                     const options = { expiresIn: 2147483647 };
-                    jwt.sign(
-                        payLoad,
-                        process.env.JWT_KEY,
+                    console.log("Toekn ka kaam chalta hua")
+                    const token = jwt.sign(payLoad,
+                        process.env.JWT_KEYS,
                         options,
-                        (err, token) => {
-                            if (err) res.status(404).json({ message: "Login failed at jwt" });
-                            else {
-                                return res.json({
-                                    message: "Login Authentication successful",
-                                    user: firstuser,
-                                    token: token,
-                                });
-                            }
-                        }
-                    );
+                        );
+                    console.log("Token ka kaam khatam")
+                    return res.status(200).send({
+                    msg:"Login Authentication successful",
+                    user: firstuser,
+                    token: token,
+                    })
+                    ;
+                    // jwt.sign(
+                    //     payLoad,
+                    //     process.env.JWT_KEY,
+                    //     options,
+                    //     (err, token) => {
+                    //         if (err) res.status(404).json({ message: "Login failed at jwt" });
+                    //         else {
+                    //             return res.json({
+                    //                 message: "Login Authentication successful",
+                    //                 user: firstuser,
+                    //                 token: token,
+                    //             });
+                    //         }
+                    //     }
+                    // );
                 } else {
                     return res.status(404).json({ message: "Password not matched" });
                 }

@@ -30,7 +30,14 @@ const Navbar = (props) => {
 
 
   }, [])
+  const calllogout=()=>{
+    localStorage.removeItem('token');
+    
+    window.location.href = '/'; // Replace with your actual URL
+    // alert('successfully Logout!!')
+    // <Link to="/SignIn"></Link>
 
+  }
   const [showMediaIcons, setShowMediaIcons] = useState(false);
   return (
     <>
@@ -68,8 +75,6 @@ const Navbar = (props) => {
             </li>
             <li>
               <div className="button">
-
-
                 {!props.show ? (<><button
                   className={classes.sign}>
                   <Link to="/Signup">Sign Up</Link>
@@ -80,9 +85,18 @@ const Navbar = (props) => {
                     className={classes.sign}>
                     <Link to="/Profile">Profile</Link>
                   </button>
+                  <button
+                    className={classes.sign} onClick={calllogout}>
+                     Logout
+                  </button>
+                  {/* <button
+                    className={classes.sign}>
+                    <Link to="/Dashboard">Dashboard</Link>
+                  </button> */}
                   {user?.selection === "yes" ? <button className={classes.sign} >
                     <Link to="/Dashboard">Dashboard</Link>
                   </button> :""}
+
                   </>)
 
                 }

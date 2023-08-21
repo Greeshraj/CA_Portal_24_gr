@@ -12,12 +12,12 @@ exports.signup = async (req, res) => {
             return res.status(400).json({ "message": "This email or phone number is already linked with an account." });
         }
         let ca_id =
-            "23KTJ" +
+            "24KTJ" +
             Math.floor(Math.random() * 899999 + 100000).toString(10) + "CA";
         let user_check = await User.findOne({ ca_id: `${ca_id}` });
         while (user_check != null) {
             let ca_id = 
-                "23KTJ" +
+                "24KTJ" +
                 Math.floor(Math.random() * 899999 + 100000).toString(10) + "CA";
             user_check = await User.findOne({ ca_id: `${ca_id}` });
         }

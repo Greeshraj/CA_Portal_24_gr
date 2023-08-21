@@ -78,11 +78,7 @@ const SignUp = (props) => {
          
         return response.json();
 
-        
-        
-         
-        
-
+       
       }).catch((err) => {
 
         setLoading(false)

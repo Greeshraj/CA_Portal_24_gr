@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.text());
 
 
-const uri = process.env.ATLAS_URI || 'mongodb://localhost:27017/ca-portal';
+const uri = process.env.ATLAS_URI ;
 const options = {
     useNewUrlParser: true,
     //   useCreateIndex: true,

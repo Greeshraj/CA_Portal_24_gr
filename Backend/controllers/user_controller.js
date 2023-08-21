@@ -5,17 +5,17 @@ exports.login_check = async (req, res) => {
 
     try {
         const token = req.headers.authorization.split(" ")[1];
-        console.log(token, "fgrtfygh");
+        // console.log(token, "fgrtfygh");
         let decoded = "";
         try {
-            decoded = jwt.verify(token, process.env.JWT_KEY);
+            decoded = await jwt.verify(token, process.env.JWT_KEYS);
         } catch (err) {
             return res.status(403).json({
-                message: "login failed at jwt",
+                message: "login failed at jwt at login_check",
             });
         }
         if (decoded) {
-            console.log(decoded);
+            // console.log(decoded);
             const user = await User.findOne({ ca_id: decoded.ca_id });
             return res.status(200).json({
                 message: "login check successful",

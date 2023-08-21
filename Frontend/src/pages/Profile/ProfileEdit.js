@@ -26,6 +26,7 @@ const ProfileEdit = () => {
       setUser(res.data.user)
       setAuth(true);
     }).catch((err) => {
+      window.location.href = '/';
       console.log(err);
       setAuth(false);
     })
