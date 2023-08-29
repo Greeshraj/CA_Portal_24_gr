@@ -267,7 +267,7 @@ function Registrations() {
             };
             const res = await Api.get("/user/get_alluser", requestOptions);
             const data = await res.data;
-            // console.log(data)
+            console.log(data)
             const newdata = data.map((e,index)=>{
                 return{
                     "first": e.first_name,

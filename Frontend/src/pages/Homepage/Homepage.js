@@ -55,7 +55,7 @@ function Home() {
                         <h2 className={styles.head2}> KSHITIJ, IIT KHARAGPUR</h2>
 
                         {
-                            auth ? <><h1 className={styles.btn} > {sel==="yes" ? "Congratulations! You are selected" : "Your Application is in Progress"} </h1><div className={styles.info}>Your CA ID is <span style={{ fontWeight: "bold" }}>{ca_id}</span></div><div className={styles.info}>Your Application ID is <span style={{ fontWeight: "bold" }}>{app_id}</span></div></> : <Link to='/SignUp'><div className={styles.btn} variant="contained">Register for CA Programme
+                            auth ? <><h1 className={styles.btn} > {sel==="yes" ? "Congratulations! You are selected" : "Your Application is in Progress"} </h1><div className={styles.info}>Your Application ID is <span style={{ fontWeight: "bold" }}>{app_id}</span></div></> : <Link to='/SignUp'><div className={styles.btn} variant="contained">Register for CA Programme
                             </div></Link>
                         }
 
